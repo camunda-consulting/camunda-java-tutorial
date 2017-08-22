@@ -11,7 +11,7 @@ The first thing we need is a service task that points to your java class
 ![service task](/service-task-with-java.PNG)
 
 
-You can't just attach any old java class to a service task, you're going to need some context and for that we need a `JavaDelegate`
+You can't just attach any old java class to a service task, you're going to need some context and for that we need a `JavaDelegate` or whatever you want
 
 
 ```Java

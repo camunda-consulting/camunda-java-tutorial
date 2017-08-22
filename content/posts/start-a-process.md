@@ -36,4 +36,33 @@ Obviously when starting a process you might want to pass in some process data - 
 ```
 
 
-There we have it!  our process has started
+There we have it!  our process has started.. 
+It was almost too easy in fact and i still have lots of space on this page so lets try something more complicated. Lets imagine I want to start the process from the ``Check Data`` task instead of the start event. In fact it would be even better if started from both the ``Check Data`` and the ``Send Email`` tasks. 
+Sounds quite complicated but of course it's not
+
+```Java
+	
+    // If we're going to start this process in the middel somewhere it's
+    //usually the case that we'll need some data to make up for the missing tasks
+	Map<String, Object> variables = new HashMap<String, Object>();
+    variables.put("userName", "Niall");
+    variables.put("greatHackDaysProject", true);
+    
+    // Once again we need the runtime server
+    processEngine.getRuntimeService()
+    	// But instad of startProcess... we're using the createProcess.. method
+	    .createProcessInstanceByKey("FunDemoProcess")
+        // We're creating a token before the check data task by giving it the id
+	    .startBeforeActivity("checkDataTaskID")
+        // and then doing the same with the email task
+	    .startBeforeActivity("sendEmailTaskID")
+        // finally we give the process the list of variables and maybe a business key for luck
+	    .setVariables(variables)
+	    .businessKey("MyKey")
+        // The just execute
+	    .execute();
+
+```
+
+
+
