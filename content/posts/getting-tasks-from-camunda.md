@@ -14,7 +14,7 @@ People often ask me "Niall, how can I get tasks from Camunda?" I usualy answer s
 The first thing to know is where to start and that is with the `TaskService` this is the entry point for any kind of communication needed regarding user tasks. 
 
 ```Java
-	processEngline.getTaskService()
+	processEngine.getTaskService()
     // Generally if you're looking to get some info 
     // from the engine it's going involve creating a query
 	  .createTaskQuery()
